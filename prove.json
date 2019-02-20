@@ -1,0 +1,17 @@
+{"_id":{"$oid":"59ba45c3e48a4e2511509eb7"},"prova":"Analisi dimensionale"}
+{"_id":{"$oid":"59c8ac481d3db5fef1dc8174"},"prova":"Analisi termica"}
+{"_id":{"$oid":"59c8af171d3db5fef1dc82f1"},"prova":"Bomba manometrica"}
+{"_id":{"$oid":"59c8b2a51d3db5fef1dc84ff"},"prova":"Densita"}
+{"_id":{"$oid":"59c8b2bb1d3db5fef1dc8513"},"prova":"Granulometria"}
+{"_id":{"$oid":"59c8b2cf1d3db5fef1dc8521"},"prova":"PH"}
+{"_id":{"$oid":"59c8b2fb1d3db5fef1dc853f"},"prova":"Potere calorifico"}
+{"_id":{"$oid":"59c8b3051d3db5fef1dc8547"},"prova":"Residuo secco"}
+{"_id":{"$oid":"59c8b3111d3db5fef1dc854d"},"prova":"Solventi"}
+{"_id":{"$oid":"59c8b31a1d3db5fef1dc8555"},"prova":"Stabilita delle polveri di lancio"}
+{"_id":{"$oid":"59c8b3261d3db5fef1dc8560"},"prova":"Stabilita invecchiamento (STANAG 4620-AOP48)"}
+{"_id":{"$oid":"59c8b3351d3db5fef1dc856a"},"prova":"Stabilita termica sotto vuoto (STANAG 4556)"}
+{"_id":{"$oid":"59c8b33f1d3db5fef1dc8574"},"prova":"Umidita"}
+{"_id":{"$oid":"59c8b34a1d3db5fef1dc857b"},"prova":"Velocita di combustione"}
+{"_id":{"$oid":"59c8b3541d3db5fef1dc8583"},"prova":"Viscosita"}
+{"_id":{"$oid":"59c8b35f1d3db5fef1dc858d"},"prova":"Ceneri"}
+{"_id":{"$oid":"59c8b3791d3db5fef1dc859f"},"prova":"Analisi Chimica"}

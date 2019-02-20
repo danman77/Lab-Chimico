@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<header>
+
+
+
+</header>
+
+
+<body ng-app="laboratorio" ng-controller="listaRichiesteTabella">
+    <form action="/app/addImage" method="post" enctype="multipart/form-data">
+        <div class="main-div col-lg-12">
+            
+            <table class="table table-striped" id="example" >
+                <thead >
+                    <tr class="table-primary row col-lg-13">
+                        <th class="col-lg-1" scope="col">N.Richiesta</th>
+                        <th class="col-lg-1" scope="col">Richiedente</th>
+                        <th class="col-lg-2" scope="col">Product Number</th>
+                        <th class="col-lg-3" scope="col">Materiale</th>
+                        <th class="col-lg-5" scope="col">Azioni</th>
+
+
+                    </tr>
+                </thead>
+                <tbody class="table-sm" >
+                    <tr  ng-repeat="richiesta in <% if (statorichiesta==0) {%>richiesteAperte<%} else if (statorichiesta==1) {%>richiesteChiuse<%} else {%>richieste<%} %>" class=" row col-lg-13">
+                        <td class="col-lg-1 campoutente">{{richiesta.numReq}}</td>
+                        <td class="col-lg-1 campoutente">{{richiesta.infoutente.cognome}}</td>
+                        <td class="col-lg-2">{{richiesta.pn}}</td>
+                        <td class="col-lg-3">{{richiesta.materiale}}</td>
+                        <td class="col-lg-1"><img src="/glyphicons/view.png" ng-click="apriRichiesta(richiesta._id)"></td>
+                        <td class="col-lg-1"><img src="/glyphicons/edit.png" ng-click="editRichiesta(richiesta._id,<%= admin %>)"></img>
+                        </td>
+                        <td class="col-lg-1"><img src="/glyphicons/delete.png"  ng-click="deleteRichiesta(richiesta._id,<%= admin %>,richiesta.stato)"></td>
+                        <td class="col-lg-2" ng-if="<%= admin %>==0 && richiesta.stato==0"><img src="/glyphicons/task_to_becompleted.png"></td>
+                        <td class="col-lg-2" ng-if="richiesta.stato==1"><input type="button" class="btn btn-success btn-sm" data-toggle="modal" value="REPORT" ng-click="getReport(richiesta._id)"></button>
+                            <td class="col-lg-2" ng-if="<%= admin %>==1 && richiesta.stato==0"><input type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal{{$index}}"
+                                    value="CARICA REPORT" ng-click=""></button>
+                                <div class="modal fade" id="exampleModal{{$index}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Upload Report</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                            </div>
+                                            <div class="modal-body">
+                                            </div>
+                                            <input type="file" file-model="file{{$index}}" name="file{{$index}}" class="form-control form-control-sm" id="file{{$index}}"></input>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
+                                                <button type="button" class="btn btn-primary" ng-click="caricaReport($index,richiesta._id,richiesta.numReq,richiesta.pn,richiesta.materiale)">Upload</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+    </form>
+</body>
+
+</html>

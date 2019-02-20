@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <title></title>
+<header>
+     
+    
+    
+</header>
+<script> $( "#databem" ).datepicker()</script>
+<script> var read ="<%= read %>" </script>
+<body ng-app="laboratorio" ng-controller="listaAnalisi" >
+        
+    <form name="formInserimento" >
+    <div class="d-inline-block card col-lg-7 ">
+        <div class="card-header col-lg-12 bg-primary text-white">
+            Richiesta Analisi di Laboratorio
+        </div>
+        <div class="card-body col-lg-12 bg-light ">
+
+            <div class="row col-lg-12">
+                <div class="col-lg-4">
+                    <label for="productnumber" class="col-form-label col-form-label-sm" >Product Number</label>
+                    <input type="text"    class="form-control form-control-sm" id="productnumber" ng-model="pn" ng-init="pn='<%= ris[0].pn %>'" required  ></input>
+                </div>
+                <div class="col-lg-8">
+                    <label for="materiale" class="col-form-label col-form-label-sm">Materiale</label>
+                    <input type="text" class="form-control form-control-sm" id="materiale" ng-model="materiale" ng-init="materiale='<%= ris[0].materiale%>'" required></input>
+                </div>
+
+            </div>
+            <div class="row col-lg-12">
+                <div class="col-lg-4">
+                    <label for="specappl" class="col-form-label col-form-label-sm">Spec. Applicabile</label>
+                    <input type="text" class="form-control form-control-sm" id="specappl" ng-model="specapp" ng-init="specapp='<%= ris[0].specapp%>'" required></input>
+                </div>
+                <div class="col-lg-4">
+                    <label for="bem" class="col-form-label col-form-label-sm">Bem</label>
+                    <input type="text" class="form-control form-control-sm" id="bem" ng-model="bem" ng-init="bem='<%= ris[0].bem%>'" required></input>
+                </div>
+                <div class="col-lg-4">
+                    <label for="databem" class="col-form-label col-form-label-sm">Data Bem</label>
+                    <input type="text" class="form-control form-control-sm" id="databem" ng-model="databem" ng-init="databem='<%= ris[0].databem%>'" required></input>
+                </div>
+            </div>
+            <div class="row col-lg-12">
+                <div class="col-lg-4">
+                    <label for="ov" class="col-form-label col-form-label-sm">Odv</label>
+                    <input type="text" class="form-control form-control-sm" id="ov" ng-model="odv" ng-init="odv='<%= ris[0].odv%>'"  required></input>
+                </div>
+                <div class="col-lg-4">
+                    <label for="lotto" class="col-form-label col-form-label-sm">Lotto campione</label>
+                    <input type="text" class="form-control form-control-sm" id="lotto" ng-model="lotto" ng-init="lotto='<%= ris[0].lotto%>'" required></input>
+                </div>
+                <div class="col-lg-4">
+                    <label for="disegno" class="col-form-label col-form-label-sm">Disegno</label>
+                    <input type="text" class="form-control form-control-sm" id="disegno" ng-model="disegno" ng-init="disegno='<%= ris[0].disegno%>'" required></input>
+                </div>
+            </div>
+
+            <div class="row col-lg-12 ">
+                <div class="col-lg-12">
+                    <label for="note" class="col-form-label col-form-label-sm">Note</label>
+                    <textarea class="form-control" id="note" ng-model="note" ng-init="note='<%= ris[0].note%>'" ></textarea>
+                </div>
+            </div>
+            <div class="row col-lg-12">
+                <div class="col-lg-4" ng-if="<% if (read==1) {%>1<%}%>">
+                    <label for="aggiungi" class="col-form-label col-form-label-sm"></label>
+                    <button class="form-control form-control-sm btn btn-primary"  id="aggiungi"  ng-click="inserisciRichiesta()" ng-disabled="!formInserimento.$valid">INVIA RICHIESTA</button>
+                </div>
+                <div class="col-lg-4" ng-if="<% if (read==2) {%>1<%}%>">
+                    <label for="aggiungi" class="col-form-label col-form-label-sm"></label>
+                    <button class="form-control form-control-sm btn btn-primary"  id="aggiungi"  ng-click="returnToHome()" >ESCI</button>
+                </div>
+                <div class="col-lg-4" ng-if="<% if (read==3) {%>1<%}%>">
+                    <label for="aggiungi" class="col-form-label col-form-label-sm"></label>
+                    <button class="form-control form-control-sm btn btn-primary"  id="aggiungi"  ng-click="editRecord('<%= ris[0]._id %>')" >MODIFICA</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="d-inline-block card col-lg-4node" style="vertical-align:top">
+        <div class="card-header col-lg-12 bg-primary text-white">
+            Elenco Analisi
+        </div>
+        <div class="card-body col-lg-12 bg-light">
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="anls in analisi" style="text-align: left"><input type="checkbox" ng-init="analisiSelezionate[anls.prova]=checkCheckbox('<%- ris[0].analisi %>',anls.prova)"   ng-value="anls.prova" ng-model="analisiSelezionate[anls.prova]"
+                       ng-checked="checkCheckbox('<%- ris[0].analisi %>',anls.prova)">{{anls.prova}}</input>
+                </li>
+            </ul>
+        </div>
+
+    
+    
+</form>
+</body>
+
+</html>
